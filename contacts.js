@@ -1,15 +1,55 @@
 //translate code into jquery
-$(function(){
-    
-    $()
 
+$(function(){
+    let globalIndex = 0;
+    
+    $(".toggleAddModal").click(function(){
+        $("#addModal").toggle()
+    })
+
+    $("#addContactBtn").click(function(){
+        let validity = true;
+        let inputs = $(this).siblings("div").children("input")
+        $.each(inputs, function (idx, elem){
+            alert(elem)
+            if(!elem.checkValidity()){
+                alert($(elem).attr("name") + "is not valid!")
+                validity = false;
+            }
+        })
+        // //make class instance
+        // inputs = $("#addContactForm").children("input")
+        // if(validity) {
+        //     $("#table tbody").append(
+        //        $(document.createElement('tr')).append(
+                    
+        //        )
+        //     )
+        // }
+
+
+    })
     //RECEIVE DATA
 
 
     //PRINT DATA
 
-
 })
+
+function checkValid(form){
+    let validity = true;
+    let errMsg = "";
+    $(form).children("input").each(function (index){
+        if(index.checkValidity()){
+            if(errMsg.length) errMsg += ", " + index.attr("name")
+            else errMsg = index.attr("name")
+            if(validity) validity = false;
+        }
+
+        if(!validity) alert(errMsg + " is invalid!");
+    })
+}
+
 
 class Contacts{
     constructor(fname, lname, email, contNum){
@@ -17,12 +57,6 @@ class Contacts{
         this.lname = lname;
         this.email = email;
         this.contNum = contNum;
-    }
-    constructor(){
-        this.fname = "";
-        this.lname = "";
-        this.email = "";
-        this.contNum = "";
     }
 
     setFirstName(){

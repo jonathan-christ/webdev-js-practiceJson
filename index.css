@@ -1,0 +1,100 @@
+/* AUTHOR: MATTHEW CEDRIC D. CALAYCAY */
+.title {
+    font-weight: bold;
+}
+
+.tb-inp{
+    border: none;
+    background-color: rgba(0,0,0,0) !important;
+    width: 100%;
+}
+
+#main {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    text-align: center;
+}
+
+#tableWrap{
+    margin:0;
+    padding:0;
+    overflow: hidden;
+    
+    border-radius: 0.5rem;
+}
+
+#table{
+    margin: 0;
+
+    padding: 5rem;
+    width: 90vw;
+}
+
+#table tr td{
+    vertical-align: middle;
+}
+
+#table tr th:first-child{
+    width: 5vw;
+}
+
+#table tr th:nth-child(){
+    width: 20vw;
+}
+
+#table tr th:last-child{
+    width: 15vw;
+}
+
+
+.modal-content{
+    padding: 1rem;
+}
+
+.modal form{
+    padding-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+}
+
+#closeModal{
+    font-size: 1rem;
+}
+
+td div{
+    display: flex;
+    justify-content:center;
+    gap: 1rem;
+}
+
+body{
+    margin: 1rem;
+}
+
+.flex{
+    display: flex;
+    flex-direction: row;
+    padding-bottom: 2rem;
+    align-items: center;
+    gap: 1rem;
+}
+
+h1, h4{
+    line-height: 1;
+    margin-bottom: 0;
+}
+
+button span{
+    margin: 0;
+    padding: 0;
+    font-size: 1.5rem;
+}
+
+thead tr{
+    background-color: rgb(13,106,244) !important;
+    color: white;
+}
+

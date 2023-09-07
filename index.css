@@ -49,19 +49,8 @@
 }
 
 
-.modal-content{
-    padding: 1rem;
-}
-
 .modal form{
     padding-top: 1rem;
-    display: flex;
-    flex-direction: column;
-    row-gap: 5px;
-}
-
-#closeModal{
-    font-size: 1rem;
 }
 
 td div{
@@ -98,3 +87,23 @@ thead tr{
     color: white;
 }
 
+.updateInput{
+    border: 0;
+    font-family: inherit;
+    font-size: inherit;
+    background-color: rgba(0,0,0,0) !important; 
+}
+
+*:focus {
+    box-shadow: none !important;
+}
+
+.btnDiv{
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.edit{
+    border-bottom: 2px solid blue;
+}

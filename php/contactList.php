@@ -19,8 +19,12 @@ class ContactList extends Dbh{
         $stmt = $this->connect()->prepare('SELECT * FROM contacts');
         if(!$stmt->execute()){
             $stmt = NULL;
-            return false;
+            return array(
+                'message' => 'error'
+            );
         }
+        
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         //return arr (probably in jquery)
     }
@@ -29,9 +33,13 @@ class ContactList extends Dbh{
         $stmt = $this->connect()->prepare('INSERT INTO contacts (lastName, firstName, email, contNum) VALUES (?,?,?,?);');
         if(!$stmt->execute(array($lname, $fname, $email, $contNum))){
             $stmt = NULL;
-            return false;
+            return array(
+                'message' => 'error'
+            );
         }
-        return true;
+        return array(
+            'message' => 'success'
+        );
     }
 
     protected function updateContact(){

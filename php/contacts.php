@@ -14,7 +14,8 @@ class Contact extends ContactList{
     }
 
     public function addContact(){
-        if($this->insertContact($this->fname, $this->lname, $this->email, $this->contNum)){
+        if(!$this->userExists($this->email)){
+            $this->insertContact($this->fname, $this->lname, $this->email, $this->contNum);
         }
     }
 

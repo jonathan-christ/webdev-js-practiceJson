@@ -1,9 +1,9 @@
 <?php
 
 class ContactList extends Dbh{
-    private function userExists($email){
-        $stmt = $this->connect()->prepare('SELECT * FROM `contacts` WHERE email = "'.$email.'"');
-        if(!$stmt->execute()){
+    protected function userExists($email){
+        $stmt = $this->connect()->prepare('SELECT * FROM `contacts` WHERE email = ?');
+        if(!$stmt->execute(array($email))){
             $stmt = NULL;
             exit();
         }
@@ -15,7 +15,7 @@ class ContactList extends Dbh{
         }
     }
 
-    private function retrieveContacts(){
+    protected function retrieveContacts(){
         $stmt = $this->connect()->prepare('SELECT * FROM contacts');
         if(!$stmt->execute()){
             $stmt = NULL;
@@ -25,12 +25,8 @@ class ContactList extends Dbh{
         //return arr (probably in jquery)
     }
 
-    public function insertContact($fname, $lname, $email, $contNum){
-        if($this->userExists($email)){
-            return false;
-        }
-        return true;
-        $stmt = $this->connect()->prepare('INSERT INTO contacts (lname, fname, email, contNum) VALUES (?,?,?,?);');
+    protected function insertContact($fname, $lname, $email, $contNum){
+        $stmt = $this->connect()->prepare('INSERT INTO contacts (lastName, firstName, email, contNum) VALUES (?,?,?,?);');
         if(!$stmt->execute(array($lname, $fname, $email, $contNum))){
             $stmt = NULL;
             return false;
@@ -38,11 +34,11 @@ class ContactList extends Dbh{
         return true;
     }
 
-    public function updateContact(){
+    protected function updateContact(){
 
     }
 
-    public function deleteContact(){
+    protected function deleteContact(){
 
     }
 }

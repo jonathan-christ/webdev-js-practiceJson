@@ -1,14 +1,13 @@
 <?php
 
-public class Dbh{
-    $servername = "localhost";
-    $username = "";
-    $password = "";
-    $dbname = "contactlist";
-
+class Dbh{
     protected function connect(){
         try{
-            $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password, $dbname);
+            $servername = "localhost";
+            $username = "root";
+            $password = "";
+            $dbname = "contactlist";
+            $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             echo "Connected successfully";
             return $conn;
@@ -17,6 +16,5 @@ public class Dbh{
         }
 
             
-        }
     }
 }

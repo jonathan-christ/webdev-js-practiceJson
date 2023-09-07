@@ -3,32 +3,24 @@
 $(function(){
     let globalIndex = 0;
     
-    $(".toggleAddModal").click(function(){
-        $("#addModal").toggle()
-    })
+    // $(".toggleAddModal").click(function(){
+    //     $("#addModal").toggle()
+    // })
 
-    $("#addContactBtn").click(function(){
-        let validity = true;
-        let inputs = $(this).siblings("div").children("input")
-        $.each(inputs, function (idx, elem){
-            alert(elem)
-            if(!elem.checkValidity()){
-                alert($(elem).attr("name") + "is not valid!")
-                validity = false;
-            }
-        })
-        // //make class instance
-        // inputs = $("#addContactForm").children("input")
-        // if(validity) {
-        //     $("#table tbody").append(
-        //        $(document.createElement('tr')).append(
-                    
-        //        )
-        //     )
-        // }
+    // $("#addContactBtn").click(function(){
+    //     let validity = true;
+    //     let inputs = $(this).siblings("div").children("input")
+    //     $.each(inputs, function (idx, elem){
+    //         alert(elem)
+    //         if(!elem.checkValidity()){
+    //             alert($(elem).attr("name") + "is not valid!")
+    //             validity = false;
+    //         }
+    //     })
+        //make class instance
+        
 
-
-    })
+    // })
     //RECEIVE DATA
 
 
@@ -50,16 +42,24 @@ function checkValid(form){
     })
 }
 
+ 
 
 class Contacts{
-    constructor(fname, lname, email, contNum){
+    constructor(id, fname, lname, email, contNum){
+        this.id = id;
         this.fname = fname;
         this.lname = lname;
         this.email = email;
         this.contNum = contNum;
     }
 
-    setFirstName(){
-        
+    getData(){
+        return {
+            "id": this.id,
+            "fname" : this.fname,
+            "lname" : this.lname,
+            "email" : this.email,
+            "contNum" : this.contNum
+        };
     }
 }

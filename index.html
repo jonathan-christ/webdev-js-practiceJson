@@ -48,33 +48,33 @@
                     <button id="closeModal" class="btn btn-light" data-bs-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body">
-                    <form id="addContactForm">
+                    <form id="addContactForm" action="php/index.inc.php" method="POST">
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                               <span class="input-group-text">Aa</span>
                             </div>
-                            <input id="lnameIn" class="form-control"  type="text" placeholder="Last Name" name="Last Name"\>
+                            <input id="lnameIn" class="form-control"  type="text" placeholder="Last Name" name="lnameIn"\>
                         </div>
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                               <span class="input-group-text">Aa</span>
                             </div>
-                            <input id="fnameIn" class="form-control"  type="text" placeholder="First Name" name="First Name"\>
+                            <input id="fnameIn" class="form-control"  type="text" placeholder="First Name" name="fnameIn"\>
                         </div>
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                               <span class="input-group-text">@</span>
                             </div>
-                            <input id="email" class="form-control"  type="text" placeholder="E-mail" name="E-mail" pattern="[\w.\-]{4,30}"\>
+                            <input id="email" class="form-control"  type="text" placeholder="E-mail" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"\>
                         </div>
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                               <span class="input-group-text">#</span>
                             </div>
-                            <input id="contact" class="form-control"  type="text" placeholder="Contact No." name="Contact No." pattern="^(09|\+639)\d{9}$"\>
+                            <input id="contact" class="form-control"  type="text" placeholder="Contact No." name="contact" pattern="^(09|\+639)\d{9}$"\>
                         </div>
     
-                        <input id="addContactBtn" class="btn btn-primary form-control mt-2"  type="button" value ="Submit">
+                        <input id="addContactBtn" name="addContactBtn" class="btn btn-primary form-control mt-2"  type="submit" value ="Submit">
                     </form>
                 </div>
             </div>

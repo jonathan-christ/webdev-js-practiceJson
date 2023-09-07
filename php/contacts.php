@@ -1,6 +1,6 @@
 <?php
 
-class Contact extends addContact{
+class Contact extends ContactList{
     private $fname;
     private $lname;
     private $email;
@@ -14,7 +14,8 @@ class Contact extends addContact{
     }
 
     public function addContact(){
-        $this->insertContact($this->fname, $this->lname, $this->email, $this->contNum);
+        if($this->insertContact($this->fname, $this->lname, $this->email, $this->contNum)){
+        }
     }
 
 }

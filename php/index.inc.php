@@ -14,7 +14,7 @@ if(isset($_POST["request"])){
 
 }
 
-if(isset($_POST["fname"])){
+if(isset($_POST["add"])){
     $fname = $_POST['fname'];
     $lname = $_POST['lname'];
     $email = $_POST['email'];
@@ -24,9 +24,22 @@ if(isset($_POST["fname"])){
     echo json_encode($contact->addContact());
 }
 
-if(isset($_POST['updateContactBtn'])){
+if(isset($_POST['update'])){
+    $id = $_POST['id'];
+    $fname = $_POST['fname'];
+    $lname = $_POST['lname'];
+    $email = $_POST['email'];
+    $contNum = $_POST['contact'];
+
+    $contact = new Contact($fname, $lname, $email, $contNum, $id);
+    echo json_encode($contact->editContact());
 }
 
-if(isset($_POST['deleteContactBtn'])){
+if(isset($_POST['delete'])){
+    $id = $_POST['id'];
+    $email = $_POST['email'];
+
+    $contact = new Contact("", "", $email, "", $id);
+    echo json_encode($contact->removeContact());
 }
 

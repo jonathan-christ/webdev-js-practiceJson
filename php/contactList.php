@@ -16,7 +16,7 @@ class ContactList extends Dbh{
     }
 
     protected function retrieveContacts(){
-        $stmt = $this->connect()->prepare('SELECT * FROM contacts');
+        $stmt = $this->connect()->prepare('SELECT * FROM contacts ORDER BY lastName');
         if(!$stmt->execute()){
             $stmt = NULL;
             return array(
@@ -42,11 +42,31 @@ class ContactList extends Dbh{
         );
     }
 
-    protected function updateContact(){
+    protected function updateContact($lname, $fname, $email, $contNum, $id){
+        $stmt = $this->connect()->prepare('UPDATE contacts SET lastName=?,firstName=?,email=?,contNum = ? WHERE id = ?;');
+        if(!$stmt->execute(array($lname, $fname, $email, $contNum, $id))){
+            $stmt = NULL;
+            return array(
+                'message' => 'error'
+            );
+        }
 
+        return array(
+            'message' => 'success'
+        );
     }
 
-    protected function deleteContact(){
+    protected function deleteContact($id){
+        $stmt = $this->connect()->prepare('DELETE FROM contacts WHERE id = ?');
+        if(!$stmt->execute(array($id))){
+            $stmt = NULL;
+            return array(
+                'message' => 'error'
+            );
+        }
 
+        return array(
+            'message' => 'success'
+        );
     }
 }

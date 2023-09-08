@@ -107,3 +107,28 @@ thead tr{
 .edit{
     border-bottom: 2px solid blue;
 }
+
+.error{
+    border-bottom: 2px solid red !important;
+}
+
+
+/* append */
+.green {
+    background-color: lightgreen;
+    color: green;
+}
+
+th{
+    font-weight: 600;
+    vertical-align:middle;
+    font-size: 1.1rem;
+}
+
+
+#successModal .modal-body{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}

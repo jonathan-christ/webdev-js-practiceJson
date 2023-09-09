@@ -121,8 +121,10 @@ function editContact(jqEl, id){
 function updateContact(jqEl, id){
     let el = $(jqEl);
     let tr = $("#"+id);
-    let validity = true;
+    let submittable = true;
+    
     $.each(tr.find("input"), (idx, child)=>{
+        let validity = true;
         //if save is clicked
         if($(child).attr("type")=="email"){
             validity = $(child).validFromPattern(getPattern("email"));
@@ -131,20 +133,19 @@ function updateContact(jqEl, id){
         }else{
             validity = $(child).isValid();
         }
+    
         
         if(!validity){
-            $(child).addClass("error");
+            $(child).addClass("is-invalid");
+            $(child).removeClass("is-valid");
+            submittable = false;
         }else{
-            $(child).removeClass("error");
+            $(child).removeClass("is-invalid");
+            $(child).addClass("is-valid");
         }
     })
 
-    if(validity){
-        let success = false;
-        flipButton(jqEl, id);
-        el.html("Update");
-        el.click(()=>editContact(jqEl, id));
-
+    if(submittable){
         let formData = {
             update: "true",
             id: id,
@@ -166,7 +167,14 @@ function updateContact(jqEl, id){
             if(data["message"]=="success"){
                 placeData();
                 $("#successModal").modal('toggle');
-            }else{
+
+                flipButton(jqEl, id);
+                el.html("Update");
+                el.click(()=>editContact(jqEl, id));
+            }else if(data["message"] == "userExists"){
+                tr.find("input").eq(2).addClass("is-invalid");
+                $("#validationEmail").html("E-mail already exists!");
+            } else{
                 $("#failureModal").modal('toggle');
             }
         });

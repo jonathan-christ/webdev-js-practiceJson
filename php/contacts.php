@@ -26,7 +26,13 @@ class Contact extends ContactList{
     }
 
     public function editContact(){
-        return($this->updateContact($this->lname, $this->fname, $this->email, $this->contNum, $this->id));
+        if(!$this->userExists($this->email, $this->id)){ 
+            return($this->updateContact($this->lname, $this->fname, $this->email, $this->contNum, $this->id));
+        } else{
+            return array(
+                "message" => "userExists"
+            );
+        }
     }
 
     public function removeContact(){

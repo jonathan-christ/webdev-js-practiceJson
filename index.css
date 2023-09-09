@@ -126,9 +126,14 @@ th{
 }
 
 
-#successModal .modal-body{
+#successModal .modal-body, #failureModal .modal-body{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+}
+
+.red{
+    background-color: pink;
+    color: red;
 }

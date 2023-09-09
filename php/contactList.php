@@ -1,14 +1,19 @@
 <?php
 
 class ContactList extends Dbh{
-    protected function userExists($email){
+    protected function userExists($email, $id = -1){
         $stmt = $this->connect()->prepare('SELECT * FROM `contacts` WHERE email = ?');
         if(!$stmt->execute(array($email))){
             $stmt = NULL;
             exit();
         }
 
+        
         if($stmt->rowCount() > 0){
+            $arr = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            if($id != -1 && $arr[0]["id"] == $id){
+                return false;
+            }
             return true;
         }else{
             return false;
